@@ -14,9 +14,14 @@ def is_valid(s):
     if not s.isalnum():
         return False
 
-    if s[4:6].isnumeric():
-        if s[6].isalpha():
-            return False
+    for i, dd in enumerate(s):
+        if dd.isdigit():
+            if dd == "0":
+                return False
+            if not s[i:].isdigit():
+                return False
+
+            break
 
     if len(s) > 6 or len(s) < 2:
         return False

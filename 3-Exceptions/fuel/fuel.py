@@ -1,19 +1,34 @@
 def main():
-    x = input("Input: ")
+    while True:
+        x = input("fuel: ")
 
-    i = x[0:1]
-    t = x[1:2]
-    g = x[2:3]
+        try:
 
-    if not t == "/":
-        print("Invalid")
-        return False
+            spl = x.split("/")
 
-    if len(x) != 3:
-        print("Invalid")
-        return False
+            i = int(spl[0])
+            t = int(spl[1])
 
-    print(x)
+            if i > t or t == 0:
+                continue
+
+            q = round(i / t * 100)
+
+            if q <= 1:
+                print("E")
+                break
+
+            elif q >= 99:
+                print("f")
+                break
+
+            print(f"{q}%")
+
+            break
+
+        except (ValueError, ZeroDivisionError):
+
+            pass
 
 
 main()

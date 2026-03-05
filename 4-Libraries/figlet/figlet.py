@@ -1,10 +1,27 @@
 from pyfiglet import Figlet
+import sys
+import random
 
 figlet = Figlet()
-import sys
+fonts = figlet.getFonts()
+
+if len(sys.argv) == 1:
+    pass
 
 
-# f = input("Font: ")
-p = figlet.getFonts()
+elif len(sys.argv) == 3:
+    s = sys.argv[1]
+    f = sys.argv[2]
 
-print(p)
+    if s != "-f" and s != "--font":
+        sys.exit("InVALID")
+
+
+else:
+    sys.exit("Invalid arguments")
+
+figlet.setFont(font=f)
+
+text = input("Input: ")
+
+print(figlet.renderText(text))

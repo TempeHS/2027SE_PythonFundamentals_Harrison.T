@@ -4,25 +4,32 @@ import sys
 num_arguments = len(sys.argv)
 
 
-if num_arguments == 2:
-    first_arg = sys.argv[1]
-    print(f"Number of arguments: {num_arguments}")
+if num_arguments < 2:
+    sys.exit("Too Many Arguments")
 
-if num_arguments > 2:
-    print("Too many arguments")
-    sys.exit
+elif num_arguments > 2:
+    sys.exit("Too Few Arguments")
 
-if num_arguments < 1:
-    print("Too Few Arguments")
-    sys.exit
+
+filename = sys.argv[1]
+
+
+if not filename.endswith(".py"):
+    sys.exit("Not a python script")
+
 
 try:
-    with open("first_arg", "r") as file:
-        content = file.read()
+    with open(filename) as file:
+        counter = 0
         for line in file:
-            first_arg.append(line.rstrip())
+            amountline = line.lstrip()
+            if not amountline:
+                continue
+            if amountline.startswith("#"):
+                continue
+            counter += 1
 
-        print()
+        print(f"Number of lines {counter}")
 
 except FileNotFoundError:
-    sys.exit
+    sys.exit("File Does Not Exist!")

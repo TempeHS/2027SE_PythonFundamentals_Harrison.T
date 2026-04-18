@@ -3,9 +3,9 @@ def main():
     vowels2213 = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
     for vowels2213 in s:
-        remove
+        r
 
-    # print(s)
+    print(s)
 
 
 main()
